@@ -1,0 +1,42 @@
+# Fully compliant Docker Compose specification
+services:
+  database:
+    image: postgres:15.5-alpine
+    user: "999:999"
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5432:5432"
+    environment:
+      POSTGRES_PASSWORD: "${DB_PASSWORD}"
+      POSTGRES_DB: "production"
+    mem_limit: 1g
+    cpus: "1.0"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  redis:
+    image: redis:7.2.4-alpine
+    user: "999:999"
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6379:6379"
+    mem_limit: 512m
+    cpus: "0.5"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

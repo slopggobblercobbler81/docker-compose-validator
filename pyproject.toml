@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "docker-compose-validator"
+version = "1.0.0"
+description = "Production-grade Docker Compose linter, security auditor, and best-practices analyzer for CI/CD and developers."
+readme = "README.md"
+authors = [
+    { name = "slopggobblercobbler81" }
+]
+license = { text = "MIT" }
+requires-python = ">=3.8"
+keywords = [
+    "docker",
+    "docker-compose",
+    "compose-specification",
+    "security-scanner",
+    "linter",
+    "devops",
+    "ci-cd",
+    "sarif"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = [
+    "PyYAML>=6.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "PyYAML>=6.0"
+]
+
+[project.scripts]
+docker-compose-validator = "docker_compose_validator.cli:main"
+compose-validate = "docker_compose_validator.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/slopggobblercobbler81/docker-compose-validator"
+Repository = "https://github.com/slopggobblercobbler81/docker-compose-validator"
+Issues = "https://github.com/slopggobblercobbler81/docker-compose-validator/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["docker_compose_validator*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --strict-markers"
