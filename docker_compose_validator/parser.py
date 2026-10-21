@@ -145,6 +145,15 @@ class ParsedComposeFile:
         return list(self.services.keys())
 
 
+    def get_service_ports(self, service_name: str) -> List[Any]:
+        """Returns exposed ports list for a specified service."""
+        svc = self.services.get(service_name)
+        if isinstance(svc, dict):
+            ports = svc.get("ports", [])
+            return ports if isinstance(ports, list) else [ports]
+        return []
+
+
 class ComposeParser:
     """Parser for docker-compose configuration files."""
 
