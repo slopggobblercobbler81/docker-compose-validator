@@ -207,6 +207,22 @@ Contributions, bug reports, and rule suggestions are warmly welcomed!
 
 ---
 
+## 🧭 Companion Tools & Ecosystem Cross-References
+
+`docker-compose-validator` pairs effectively with standard container linting and IaC security tools:
+
+- **Upstream Container Companions:**
+  - [`hadolint/hadolint`](https://github.com/hadolint/hadolint) — Dockerfile linter based on Docker best practices.
+  - [`wagoodman/dive`](https://github.com/wagoodman/dive) — A tool for exploring a docker image, layer contents, and discovering ways to shrink your image size.
+  - [`bridgecrewio/checkov`](https://github.com/bridgecrewio/checkov) — Prevent cloud misconfigurations and scan infrastructure-as-code.
+  - [`aquasecurity/trivy`](https://github.com/aquasecurity/trivy) — Comprehensive security scanner for container images and filesystems.
+- **Sibling Container Tools:**
+  - [`dockerfile-guard`](https://github.com/slopggobblercobbler81/dockerfile-guard) — Static Dockerfile linter and layer cache optimizer.
+  - [`dockerfile-sec-guard`](https://github.com/slopggobblercobbler81/dockerfile-sec-guard) — Container image security scanner and unprivileged user verification tool.
+  - [`gha-workflow-auditor`](https://github.com/slopggobblercobbler81/gha-workflow-auditor) — GitHub Actions CI/CD workflow security auditor.
+
+---
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
