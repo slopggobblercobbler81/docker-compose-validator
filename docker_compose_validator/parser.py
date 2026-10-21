@@ -140,6 +140,11 @@ class ParsedComposeFile:
         return False
 
 
+    def get_service_names(self) -> List[str]:
+        """Returns list of defined service names in the compose file."""
+        return list(self.services.keys())
+
+
 class ComposeParser:
     """Parser for docker-compose configuration files."""
 
