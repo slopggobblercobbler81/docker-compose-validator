@@ -1,5 +1,5 @@
-feat(parser): add get_service_volumes helper to ParsedComposeFile
+feat(parser): add get_service_restart_policy helper to ParsedComposeFile
 
-Provide helper method to inspect volume mount definitions per service.
+Provide helper method to query configured restart policy for a service.
 
 Co-authored-by: Stephen Cork <slopggobblercobbler81@users.noreply.github.com>

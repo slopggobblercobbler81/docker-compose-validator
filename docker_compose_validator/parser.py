@@ -171,6 +171,15 @@ class ParsedComposeFile:
         return []
 
 
+    def get_service_restart_policy(self, service_name: str) -> Optional[str]:
+        """Returns restart policy string for a service if specified."""
+        svc = self.services.get(service_name)
+        if isinstance(svc, dict):
+            val = svc.get("restart")
+            return str(val) if val is not None else None
+        return None
+
+
 class ComposeParser:
     """Parser for docker-compose configuration files."""
 
