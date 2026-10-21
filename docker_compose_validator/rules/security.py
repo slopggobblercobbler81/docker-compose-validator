@@ -457,6 +457,14 @@ class DangerousCapabilitiesRule(BaseRule):
         "CAP_SYS_BOOT",
         "MAC_ADMIN",
         "CAP_MAC_ADMIN",
+        "SYS_CHROOT",
+        "CAP_SYS_CHROOT",
+        "MKNOD",
+        "CAP_MKNOD",
+        "AUDIT_CONTROL",
+        "CAP_AUDIT_CONTROL",
+        "SYSLOG",
+        "CAP_SYSLOG",
     }
 
     def check(self, parsed: ParsedComposeFile) -> List[Finding]:

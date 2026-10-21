@@ -232,3 +232,25 @@ services:
     assert "SYS_RAWIO" in caps
     assert "CAP_SYS_BOOT" in caps
     assert "MAC_ADMIN" in caps
+
+
+def test_sec007_chroot_mknod_and_syslog_capabilities():
+    rule = DangerousCapabilitiesRule()
+    content = """
+services:
+  breakout_app:
+    image: alpine:3.18
+    cap_add:
+      - SYS_CHROOT
+      - CAP_MKNOD
+      - AUDIT_CONTROL
+      - CAP_SYSLOG
+"""
+    parsed = ComposeParser.parse_string(content, "test.yml")
+    findings = rule.check(parsed)
+    assert len(findings) == 4
+    caps = {f.details["capability"] for f in findings}
+    assert "SYS_CHROOT" in caps
+    assert "CAP_MKNOD" in caps
+    assert "AUDIT_CONTROL" in caps
+    assert "CAP_SYSLOG" in caps
