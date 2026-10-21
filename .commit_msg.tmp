@@ -1,0 +1,5 @@
+feat(parser): add get_service_names helper to ParsedComposeFile
+
+Provide helper method to retrieve defined service keys from parsed Compose structure.
+
+Co-authored-by: Stephen Cork <stephencork81@gmail.com>
