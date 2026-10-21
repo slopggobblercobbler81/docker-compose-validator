@@ -162,6 +162,15 @@ class ParsedComposeFile:
         return {}
 
 
+    def get_service_volumes(self, service_name: str) -> List[Any]:
+        """Returns declared volume mounts list for a service."""
+        svc = self.services.get(service_name)
+        if isinstance(svc, dict):
+            vols = svc.get("volumes", [])
+            return vols if isinstance(vols, list) else [vols]
+        return []
+
+
 class ComposeParser:
     """Parser for docker-compose configuration files."""
 
