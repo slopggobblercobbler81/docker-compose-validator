@@ -154,6 +154,14 @@ class ParsedComposeFile:
         return []
 
 
+    def get_service_environment(self, service_name: str) -> Any:
+        """Returns declared environment variables dictionary or list for a service."""
+        svc = self.services.get(service_name)
+        if isinstance(svc, dict):
+            return svc.get("environment", {})
+        return {}
+
+
 class ComposeParser:
     """Parser for docker-compose configuration files."""
 
