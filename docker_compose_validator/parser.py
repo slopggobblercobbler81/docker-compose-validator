@@ -180,6 +180,11 @@ class ParsedComposeFile:
         return None
 
 
+    def has_service(self, service_name: str) -> bool:
+        """Checks if a named service is defined in the compose structure."""
+        return service_name in self.services
+
+
 class ComposeParser:
     """Parser for docker-compose configuration files."""
 
