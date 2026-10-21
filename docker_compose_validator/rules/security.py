@@ -451,6 +451,12 @@ class DangerousCapabilitiesRule(BaseRule):
         "CAP_SYS_MODULE",
         "DAC_OVERRIDE",
         "CAP_DAC_OVERRIDE",
+        "SYS_RAWIO",
+        "CAP_SYS_RAWIO",
+        "SYS_BOOT",
+        "CAP_SYS_BOOT",
+        "MAC_ADMIN",
+        "CAP_MAC_ADMIN",
     }
 
     def check(self, parsed: ParsedComposeFile) -> List[Finding]:

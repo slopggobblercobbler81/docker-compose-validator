@@ -212,3 +212,23 @@ services:
     assert len(findings) == 2
     assert findings[0].service_name == "bad_app"
     assert findings[1].service_name == "bad_app"
+
+
+def test_sec007_additional_dangerous_capabilities():
+    rule = DangerousCapabilitiesRule()
+    content = """
+services:
+  rawio_app:
+    image: alpine:3.18
+    cap_add:
+      - SYS_RAWIO
+      - CAP_SYS_BOOT
+      - MAC_ADMIN
+"""
+    parsed = ComposeParser.parse_string(content, "test.yml")
+    findings = rule.check(parsed)
+    assert len(findings) == 3
+    caps = {f.details["capability"] for f in findings}
+    assert "SYS_RAWIO" in caps
+    assert "CAP_SYS_BOOT" in caps
+    assert "MAC_ADMIN" in caps
