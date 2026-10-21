@@ -1,5 +1,5 @@
-feat(parser): add get_service_environment helper to ParsedComposeFile
+feat(parser): add get_service_volumes helper to ParsedComposeFile
 
-Provide helper to retrieve declared environment variable mapping for a service.
+Provide helper method to inspect volume mount definitions per service.
 
 Co-authored-by: Stephen Cork <slopggobblercobbler81@users.noreply.github.com>
